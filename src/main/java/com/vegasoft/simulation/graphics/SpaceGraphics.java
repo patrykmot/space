@@ -94,7 +94,7 @@ public class SpaceGraphics {
     private final Matrix4f vpMat = new Matrix4f();
     private float xAngle = 0.5f, yAngle = 0.3f, radius = 20;
 
-    private int grid, cube;
+    private int grid, cube, sphere;
     private int gridProgram;
     private int gridProgramMatLocation;
     private Graphics graphics;
@@ -157,20 +157,14 @@ public class SpaceGraphics {
                 glViewport(0, 0, width, height);
                 glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
                 // draw cube
-
                 glUseProgramObjectARB(0);
                 glLoadMatrixf(updateMatrices(true).get(stack.mallocFloat(16)));
-
                 graphics.draw(new GraphicAssistance() {
                     @Override
                     public void drawCubePlease() {
                         glCallList(cube);
                     }
                 }, this.locationScaleFactor);
-//                glCallList(cube);
-//                glTranslatef(5.3f,0.3f, 0.3f);
-//                glCallList(cube);
-                // draw grid
                 glUseProgramObjectARB(gridProgram);
                 glUniformMatrix4fvARB(gridProgramMatLocation, false, updateMatrices(false).get(stack.mallocFloat(16)));
                 glCallList(grid);
@@ -231,6 +225,44 @@ public class SpaceGraphics {
         glVertex4f(1, 0, -1, 0);
         glVertex4f(-1, 0, -1, 0);
         glVertex4f(0, 0, 0, 1);
+        glEnd();
+        glEndList();
+    }
+
+    private void createSphere() {
+        sphere = glGenLists(1);
+        glNewList(sphere, GL_COMPILE);
+        glBegin(GL_QUADS);
+        glColor3f(0.0f, 0.0f, 0.2f);
+        glVertex3f(0.5f, -0.5f, -0.5f);
+        glVertex3f(-0.5f, -0.5f, -0.5f);
+        glVertex3f(-0.5f, 0.5f, -0.5f);
+        glVertex3f(0.5f, 0.5f, -0.5f);
+        glColor3f(0.0f, 0.0f, 1.0f);
+        glVertex3f(0.5f, -0.5f, 0.5f);
+        glVertex3f(0.5f, 0.5f, 0.5f);
+        glVertex3f(-0.5f, 0.5f, 0.5f);
+        glVertex3f(-0.5f, -0.5f, 0.5f);
+        glColor3f(1.0f, 0.0f, 0.0f);
+        glVertex3f(0.5f, -0.5f, -0.5f);
+        glVertex3f(0.5f, 0.5f, -0.5f);
+        glVertex3f(0.5f, 0.5f, 0.5f);
+        glVertex3f(0.5f, -0.5f, 0.5f);
+        glColor3f(0.2f, 0.0f, 0.0f);
+        glVertex3f(-0.5f, -0.5f, 0.5f);
+        glVertex3f(-0.5f, 0.5f, 0.5f);
+        glVertex3f(-0.5f, 0.5f, -0.5f);
+        glVertex3f(-0.5f, -0.5f, -0.5f);
+        glColor3f(0.0f, 1.0f, 0.0f);
+        glVertex3f(0.5f, 0.5f, 0.5f);
+        glVertex3f(0.5f, 0.5f, -0.5f);
+        glVertex3f(-0.5f, 0.5f, -0.5f);
+        glVertex3f(-0.5f, 0.5f, 0.5f);
+        glColor3f(0.0f, 0.2f, 0.0f);
+        glVertex3f(0.5f, -0.5f, -0.5f);
+        glVertex3f(0.5f, -0.5f, 0.5f);
+        glVertex3f(-0.5f, -0.5f, 0.5f);
+        glVertex3f(-0.5f, -0.5f, -0.5f);
         glEnd();
         glEndList();
     }
