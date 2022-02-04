@@ -1,5 +1,9 @@
-package com.vegasoft.simulation.calc;
+package com.vegasoft.simulation.sim;
 
+import com.vegasoft.simulation.calc.ForceCalculator;
+import com.vegasoft.simulation.calc.NewtonEquationNumericalSolution;
+import com.vegasoft.simulation.calc.PhysicalBody;
+import com.vegasoft.simulation.calc.Vector3D;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,7 +54,7 @@ public class Simulation implements Runnable {
             PhysicalBody b1 = physicalBodyList.get(i1);
             for (int i2 = i1 + 1; i2 < physicalBodyList.size(); ++i2) {
                 PhysicalBody b2 = physicalBodyList.get(i2);
-                Vector3D force = forceCalculator.calculateForceFromAtoB(b1, b2);
+                Vector3D force = forceCalculator.calculateForceWhichAGetsFromB(b1, b2);
                 b1.addForce(force);
                 b2.subtractForce(force);
             }

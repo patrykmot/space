@@ -1,5 +1,6 @@
 package com.vegasoft.simulation.calc;
 
+import com.vegasoft.simulation.sim.Simulation;
 import org.junit.Assert;
 import org.junit.Test;
 

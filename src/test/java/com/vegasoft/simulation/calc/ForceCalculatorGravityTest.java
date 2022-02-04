@@ -19,7 +19,7 @@ public class ForceCalculatorGravityTest {
         sun.setLocation(Vector3D.create(1.497e11, 0.0, 0.0)); // meters
         sun.setM(1.99e30); // kg
 
-        Vector3D force = calculatorGravity.calculateForceFromAtoB(earth, sun);
+        Vector3D force = calculatorGravity.calculateForceWhichAGetsFromB(earth, sun);
         double forceValue = force.getLength();
 
         Assert.assertEquals(forceGravitySunAndEarth, forceValue, 1e20);

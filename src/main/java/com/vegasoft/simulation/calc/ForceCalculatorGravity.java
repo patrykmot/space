@@ -10,7 +10,7 @@ public class ForceCalculatorGravity implements ForceCalculator {
     }
 
     @Override
-    public Vector3D calculateForceFromAtoB(PhysicalBody a, PhysicalBody b) {
+    public Vector3D calculateForceWhichAGetsFromB(PhysicalBody a, PhysicalBody b) {
         double m = a.getM() * b.getM();
         Vector3D diffLocation = Vector3D.convert(b.getLocation().subtract(a.getLocation()));
         double r = diffLocation.getLength();

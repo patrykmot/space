@@ -12,8 +12,8 @@
         <lwjgl.version>3.3.0</lwjgl.version>
         <lwjgl.natives>natives-windows</lwjgl.natives>
         <joml.version>1.10.4-SNAPSHOT</joml.version>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.15</maven.compiler.target>
+        <maven.compiler.source>1.15</maven.compiler.source>
     </properties>
 
     <dependencyManagement>
