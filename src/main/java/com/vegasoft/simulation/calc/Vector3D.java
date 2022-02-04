@@ -41,6 +41,11 @@ public class Vector3D extends ArrayRealVector {
         return new Vector3D(x, y, z);
     }
 
+    public static Vector3D create(RealVector vector) {
+        return new Vector3D(vector);
+    }
+
+
     public double getX() {
         return getEntry(X);
     }
