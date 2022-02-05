@@ -1,8 +1,8 @@
 package com.vegasoft.simulation;
 
-import com.vegasoft.simulation.calc.PhysicalBodyFactoryForSpaceTelescopeWeber;
 import com.vegasoft.simulation.graphics.PhysicalBodyGraphics;
 import com.vegasoft.simulation.graphics.SpaceGraphics;
+import com.vegasoft.simulation.sim.PhysicalBodyFactoryForSpaceTelescopeWeber;
 import com.vegasoft.simulation.sim.Simulation;
 import com.vegasoft.simulation.sim.SimulationFactory;
 import com.vegasoft.simulation.sim.SimulationFactoryCreator;

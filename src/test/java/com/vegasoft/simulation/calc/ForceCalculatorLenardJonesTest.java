@@ -11,7 +11,7 @@ public class ForceCalculatorLenardJonesTest {
     public void testZeroForce() {
         double ro = 5;
         double rm = Math.pow(2, 1 / 6.0) * ro;
-        ForceCalculatorLenardJones calc = new ForceCalculatorLenardJones(10, ro);
+        ForceCalculatorLenardJones calc = new ForceCalculatorLenardJones(10, rm);
 
         PhysicalBody ph1 = new PhysicalBody();
         ph1.setLocation(Vector3D.create(0, 0, 0));
@@ -27,9 +27,8 @@ public class ForceCalculatorLenardJonesTest {
 
     @Test
     public void testCloseForce() {
-        double ro = 5;
-        ForceCalculatorLenardJones calc = new ForceCalculatorLenardJones(10, ro);
-        double rm = calc.calculateZeroForceDistanceRm();
+        double rm = 5;
+        ForceCalculatorLenardJones calc = new ForceCalculatorLenardJones(10, 5);
 
         PhysicalBody ph1 = new PhysicalBody();
         ph1.setLocation(Vector3D.create(0, 0, 0));
@@ -38,7 +37,7 @@ public class ForceCalculatorLenardJonesTest {
 
         Vector3D force = calc.calculateForceWhichAGetsFromB(ph1, ph2);
 
-        Assert.assertEquals(-77.08428988d, force.getX(), DELTA);
+        Assert.assertEquals(-87.78485172d, force.getX(), DELTA);
         Assert.assertEquals(0.0d, force.getY(), DELTA);
         Assert.assertEquals(0.0d, force.getZ(), DELTA);
     }
@@ -56,7 +55,7 @@ public class ForceCalculatorLenardJonesTest {
 
         Vector3D force = calc.calculateForceWhichAGetsFromB(ph1, ph2);
 
-        Assert.assertEquals(11.78671174d, force.getX(), DELTA);
+        Assert.assertEquals(10.64322586d, force.getX(), DELTA);
         Assert.assertEquals(0.0d, force.getY(), DELTA);
         Assert.assertEquals(0.0d, force.getZ(), DELTA);
     }

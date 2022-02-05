@@ -4,6 +4,7 @@ import org.apache.commons.math3.util.FastMath;
 
 public class ForceCalculatorLenardJones implements ForceCalculator {
 
+    private static final double COEF1 = Math.pow(2, 1 / 6.0);
     /**
      * Deep of potential
      */
@@ -14,9 +15,9 @@ public class ForceCalculatorLenardJones implements ForceCalculator {
      */
     private double ro;
 
-    public ForceCalculatorLenardJones(double epsilon, double ro) {
+    public ForceCalculatorLenardJones(double epsilon, double rm) {
         this.epsilon = epsilon;
-        this.ro = ro;
+        this.ro = rm / COEF1;
     }
 
     @Override
@@ -29,6 +30,6 @@ public class ForceCalculatorLenardJones implements ForceCalculator {
     }
 
     public double calculateZeroForceDistanceRm() {
-        return Math.pow(2, 1 / 6.0) * ro;
+        return COEF1 * ro;
     }
 }

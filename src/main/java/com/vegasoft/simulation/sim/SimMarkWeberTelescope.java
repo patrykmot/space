@@ -5,7 +5,6 @@ import com.vegasoft.simulation.calc.ForceCalculatorGravity;
 import com.vegasoft.simulation.calc.NewtonEquationNumericalSolution;
 import com.vegasoft.simulation.calc.NewtonEquationNumericalSolutionVerlet;
 import com.vegasoft.simulation.calc.PhysicalBody;
-import com.vegasoft.simulation.calc.PhysicalBodyFactoryForSpaceTelescopeWeber;
 
 import java.util.List;
 

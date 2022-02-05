@@ -30,7 +30,7 @@ public class PhysicalBodyGraphics implements Graphics {
             }
             glPushMatrix();
             glTranslated(location.getX(), location.getY(), location.getZ());
-            setScale(pb);
+//            setScale(pb);
             graphicAssistance.drawCubePlease();
             glPopMatrix();
         });

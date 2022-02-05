@@ -1,9 +1,12 @@
-package com.vegasoft.simulation.calc;
+package com.vegasoft.simulation.sim;
+
+import com.vegasoft.simulation.calc.PhysicalBody;
+import com.vegasoft.simulation.calc.Vector3D;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PhysicalBodyFactoryForSpaceTelescopeWeber {
+public class PhysicalBodyFactoryForSpaceTelescopeWeber implements PhysicalBodyFactory {
 
     public static final double MASS_EARTH = 5.96e24;
     public static final double MASS_SUN = 1.99e30;
