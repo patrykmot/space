@@ -5,7 +5,7 @@ import java.util.Optional;
 public class SimulationFactoryCreator {
 
     private enum SimulationFactoryNames {
-        MarkWeberTelescope(SimMarkWeberTelescope.class), SimParticles(SimParticles.class);
+        SimMarkWeberTelescope(SimMarkWeberTelescope.class), SimParticles(SimParticles.class);
         private Class className;
 
         SimulationFactoryNames(Class<? extends SimulationFactory> className) {

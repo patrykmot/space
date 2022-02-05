@@ -26,7 +26,7 @@ public class PhysicalBodyGraphics implements Graphics {
         physicalBodySource.getPhysicalBodies().forEach(pb -> {
             Vector3D location = pb.getLocation();
             if (locationScaleFactor != null) {
-                location = Vector3D.convert(location.mapDivide(locationScaleFactor));
+                location = location.copy().mapDivide(locationScaleFactor);
             }
             glPushMatrix();
             glTranslated(location.getX(), location.getY(), location.getZ());

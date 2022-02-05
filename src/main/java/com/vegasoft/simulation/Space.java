@@ -21,6 +21,11 @@ public class Space {
         FrequencyExecutor executor = new FrequencyExecutor(simulation, 0);
         PhysicalBodyGraphics physicalBodyGraphics = new PhysicalBodyGraphics(simulation::getPhysicalBodyListResult, PhysicalBodyFactoryForSpaceTelescopeWeber.MASS_SUN);
         new SpaceGraphics(physicalBodyGraphics, factory.getLocationScaleFactor()).run();
+//        try {
+//            Thread.sleep(1000 * 1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         executor.stop();
     }
 }

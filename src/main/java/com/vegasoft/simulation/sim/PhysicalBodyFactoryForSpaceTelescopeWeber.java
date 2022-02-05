@@ -46,7 +46,7 @@ public class PhysicalBodyFactoryForSpaceTelescopeWeber implements PhysicalBodyFa
 
     private Vector3D calculateL2(PhysicalBody b1, PhysicalBody b2) {
         // Lagrange L2 point https://www.mat.univie.ac.at/~westra/lagrangepoints.pdf
-        Vector3D l2 = Vector3D.convert(b2.getLocation().mapMultiply(1 + Math.pow(b2.getM() / (3 * b1.getM()), 1 / 3.0)));
+        Vector3D l2 = b2.getLocation().copy().mapMultiply(1 + Math.pow(b2.getM() / (3 * b1.getM()), 1 / 3.0));
         return l2;
     }
 

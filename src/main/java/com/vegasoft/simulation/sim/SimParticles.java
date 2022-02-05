@@ -18,7 +18,7 @@ public class SimParticles implements SimulationFactory {
 
         RandomizeLocationFunction rf = new RandomizeLocationFunction(0.00001);
 
-        PhysicalBodyFactoryParticles factoryParticles = new PhysicalBodyFactoryParticles(new ParticleParams(5, 5, 5, rm - 0.14, rf));
+        PhysicalBodyFactoryParticles factoryParticles = new PhysicalBodyFactoryParticles(new ParticleParams(7, 7, 7, rm - 0.14, rf));
         List<PhysicalBody> physicalBodyList = factoryParticles.createBodies();
         Simulation simulation = new Simulation(forceCalculator, numericalSolution, physicalBodyList);
         return simulation;

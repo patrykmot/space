@@ -16,9 +16,9 @@ public class PhysicalBody {
 
     public PhysicalBody(PhysicalBody b) {
         this.m = b.m;
-        this.location = Vector3D.convert(b.location.copy());
-        this.velocity = Vector3D.convert(b.velocity.copy());
-        this.force = Vector3D.convert(b.force.copy());
+        this.location = b.location.copy();
+        this.velocity = b.velocity.copy();
+        this.force = b.force.copy();
         this.name = b.name;
     }
 
@@ -68,11 +68,11 @@ public class PhysicalBody {
     }
 
     public void addForce(Vector3D f) {
-        force = Vector3D.convert(force.add(f));
+        force.add(f);
     }
 
     public void subtractForce(Vector3D f) {
-        force = Vector3D.convert(force.subtract(f));
+        force.subtract(f);
     }
 
     @Override
