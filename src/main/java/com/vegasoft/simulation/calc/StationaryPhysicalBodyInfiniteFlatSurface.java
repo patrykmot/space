@@ -11,6 +11,6 @@ public class StationaryPhysicalBodyInfiniteFlatSurface extends StationaryPhysica
     @Override
     public Vector3D calculateDistanceTo(PhysicalBody physicalBody) {
         double distance = physicalBody.getLocation().copy().subtract(getLocation()).multiply(direction);
-        return direction.copy().mapMultiply(distance);
+        return direction.copy().mapMultiply(distance * -1);
     }
 }
