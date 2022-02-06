@@ -11,6 +11,10 @@ public class Vector3D {
         setZ(z);
     }
 
+    public Vector3D() {
+
+    }
+
     public static Vector3D getZeroVec() {
         return ZERO_VEC.copy();
     }
