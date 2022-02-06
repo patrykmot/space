@@ -1,8 +1,10 @@
 package com.vegasoft.simulation.calc;
 
 public class PhysicalBody {
+    private Vector3D velocity = Vector3D.getZeroVec();
     private String name;
     private double m = 1.0;
+    private double airDragCoefficient = 0.05;
     private Vector3D location = Vector3D.getZeroVec();
 
     public PhysicalBody() {
@@ -16,6 +18,7 @@ public class PhysicalBody {
         this.m = b.m;
         this.name = b.name;
         this.location = b.location.copy();
+        this.velocity = b.velocity.copy();
     }
 
     public Vector3D getLocation() {
@@ -50,6 +53,22 @@ public class PhysicalBody {
         return difR;
     }
 
+    public double getAirDragCoefficient() {
+        return airDragCoefficient;
+    }
+
+    public void setAirDragCoefficient(double airDragCoefficient) {
+        this.airDragCoefficient = airDragCoefficient;
+    }
+
+    public Vector3D getVelocity() {
+        return velocity;
+    }
+
+    public PhysicalBody setVelocity(Vector3D velocity) {
+        this.velocity = velocity;
+        return this;
+    }
 
     @Override
     public String toString() {
