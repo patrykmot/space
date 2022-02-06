@@ -16,9 +16,9 @@ public class NewtonEquationNumericalSolutionVerletTest {
 
         NewtonEquationNumericalSolutionVerlet solution = new NewtonEquationNumericalSolutionVerlet(DT);
 
-        PhysicalBody b = new PhysicalBody();
+        Particle b = new Particle();
 
-        List<PhysicalBody> bodies = new ArrayList<>();
+        List<Particle> bodies = new ArrayList<>();
         bodies.add(b);
 
         b.setLocation(new Vector3D(0.0, 0.0, 10.0));

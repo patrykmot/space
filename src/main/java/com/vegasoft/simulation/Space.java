@@ -19,7 +19,7 @@ public class Space {
         SimulationFactory factory = SimulationFactoryCreator.createFactory(args);
         Simulation simulation = factory.createSimulation();
         FrequencyExecutor executor = new FrequencyExecutor(simulation, 0);
-        PhysicalBodyGraphics physicalBodyGraphics = new PhysicalBodyGraphics(simulation::getPhysicalBodyListResult, PhysicalBodyFactoryForSpaceTelescopeWeber.MASS_SUN);
+        PhysicalBodyGraphics physicalBodyGraphics = new PhysicalBodyGraphics(simulation::getParticleListResult, PhysicalBodyFactoryForSpaceTelescopeWeber.MASS_SUN);
         new SpaceGraphics(physicalBodyGraphics, factory.getLocationScaleFactor()).run();
 //        try {
 //            Thread.sleep(1000 * 1000);

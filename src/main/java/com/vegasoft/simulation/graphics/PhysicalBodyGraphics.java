@@ -1,6 +1,6 @@
 package com.vegasoft.simulation.graphics;
 
-import com.vegasoft.simulation.calc.PhysicalBody;
+import com.vegasoft.simulation.calc.Particle;
 import com.vegasoft.simulation.calc.PhysicalBodySource;
 import com.vegasoft.simulation.calc.Vector3D;
 import org.slf4j.Logger;
@@ -36,7 +36,7 @@ public class PhysicalBodyGraphics implements Graphics {
         });
     }
 
-    private void setScale(PhysicalBody pb) {
+    private void setScale(Particle pb) {
         double coeff = ((pb.getM() / maxMass + 1));
         double scale = Math.max(Math.log(coeff), minScale);
         scale = Math.min(scale, 1.0);

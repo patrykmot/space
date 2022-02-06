@@ -4,5 +4,5 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public interface NewtonEquationNumericalSolution {
-    void calculateStep(List<PhysicalBody> bodies, Consumer<Boolean> forceCalculationHandler);
+    void calculateStep(List<Particle> bodies, Consumer<Boolean> forceCalculationHandler);
 }

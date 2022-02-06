@@ -4,8 +4,6 @@ public class PhysicalBody {
     private String name;
     private double m = 1.0;
     private Vector3D location = Vector3D.getZeroVec();
-    private Vector3D velocity = Vector3D.getZeroVec();
-    private Vector3D force = Vector3D.getZeroVec();
 
     public PhysicalBody() {
     }
@@ -16,19 +14,8 @@ public class PhysicalBody {
 
     public PhysicalBody(PhysicalBody b) {
         this.m = b.m;
-        this.location = b.location.copy();
-        this.velocity = b.velocity.copy();
-        this.force = b.force.copy();
         this.name = b.name;
-    }
-
-    public double getM() {
-        return m;
-    }
-
-    public PhysicalBody setM(double m) {
-        this.m = m;
-        return this;
+        this.location = b.location.copy();
     }
 
     public Vector3D getLocation() {
@@ -40,21 +27,12 @@ public class PhysicalBody {
         return this;
     }
 
-    public Vector3D getVelocity() {
-        return velocity;
+    public double getM() {
+        return m;
     }
 
-    public PhysicalBody setVelocity(Vector3D velocity) {
-        this.velocity = velocity;
-        return this;
-    }
-
-    public Vector3D getForce() {
-        return force;
-    }
-
-    public PhysicalBody setForce(Vector3D force) {
-        this.force = force;
+    public PhysicalBody setM(double m) {
+        this.m = m;
         return this;
     }
 
@@ -67,22 +45,17 @@ public class PhysicalBody {
         return this;
     }
 
-    public void addForce(Vector3D f) {
-        force.add(f);
+    public Vector3D calculateDistanceTo(PhysicalBody physicalBody) {
+        Vector3D difR = getLocation().copy().subtract(physicalBody.getLocation());
+        return difR;
     }
 
-    public void subtractForce(Vector3D f) {
-        force.subtract(f);
-    }
 
     @Override
     public String toString() {
-        return "PhysicalBody{" +
+        return "Body{" +
                 "name='" + name + '\'' +
                 ", m=" + m +
-                ", location=" + location +
-                ", velocity=" + velocity +
-                ", force=" + force +
                 '}';
     }
 }

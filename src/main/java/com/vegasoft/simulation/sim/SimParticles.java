@@ -4,7 +4,7 @@ import com.vegasoft.simulation.calc.ForceCalculator;
 import com.vegasoft.simulation.calc.ForceCalculatorLenardJones;
 import com.vegasoft.simulation.calc.NewtonEquationNumericalSolution;
 import com.vegasoft.simulation.calc.NewtonEquationNumericalSolutionVerlet;
-import com.vegasoft.simulation.calc.PhysicalBody;
+import com.vegasoft.simulation.calc.Particle;
 
 import java.util.List;
 
@@ -19,8 +19,8 @@ public class SimParticles implements SimulationFactory {
         RandomizeLocationFunction rf = new RandomizeLocationFunction(0.00001);
 
         PhysicalBodyFactoryParticles factoryParticles = new PhysicalBodyFactoryParticles(new ParticleParams(7, 7, 7, rm - 0.14, rf));
-        List<PhysicalBody> physicalBodyList = factoryParticles.createBodies();
-        Simulation simulation = new Simulation(forceCalculator, numericalSolution, physicalBodyList);
+        List<Particle> particleList = factoryParticles.createBodies();
+        Simulation simulation = new Simulation(new SimulationParameters(forceCalculator, numericalSolution, particleList));
         return simulation;
     }
 

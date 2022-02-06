@@ -90,4 +90,33 @@ public class Vector3D {
         z /= value;
         return this;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Vector3D vector3D = (Vector3D) o;
+
+        if (Double.compare(vector3D.x, x) != 0) return false;
+        if (Double.compare(vector3D.y, y) != 0) return false;
+        return Double.compare(vector3D.z, z) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(x);
+        result = (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(y);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(z);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
+    public double multiply(Vector3D vec) {
+        return x * vec.x + y * vec.y + z * vec.z;
+    }
 }

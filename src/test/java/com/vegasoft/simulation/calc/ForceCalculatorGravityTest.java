@@ -12,10 +12,10 @@ public class ForceCalculatorGravityTest {
 
         ForceCalculatorGravity calculatorGravity = new ForceCalculatorGravity();
 
-        PhysicalBody earth = new PhysicalBody();
+        Particle earth = new Particle();
         earth.setM(5.96e24); // kg
 
-        PhysicalBody sun = new PhysicalBody();
+        Particle sun = new Particle();
         sun.setLocation(Vector3D.create(1.497e11, 0.0, 0.0)); // meters
         sun.setM(1.99e30); // kg
 

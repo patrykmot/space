@@ -1,6 +1,6 @@
 package com.vegasoft.simulation.sim;
 
-import com.vegasoft.simulation.calc.PhysicalBody;
+import com.vegasoft.simulation.calc.Particle;
 import com.vegasoft.simulation.calc.Vector3D;
 
 import java.util.ArrayList;
@@ -17,13 +17,13 @@ public class PhysicalBodyFactoryParticles implements PhysicalBodyFactory {
     }
 
     @Override
-    public List<PhysicalBody> createBodies() {
-        List<PhysicalBody> pbList = new ArrayList<>();
+    public List<Particle> createBodies() {
+        List<Particle> pbList = new ArrayList<>();
 
         for (int x = 0; x < pp.getXCount(); ++x) {
             for (int y = 0; y < pp.getYCount(); ++y) {
                 for (int z = 0; z < pp.getZCount(); ++z) {
-                    PhysicalBody pb = new PhysicalBody();
+                    Particle pb = new Particle();
                     pb.setName(createName());
                     pb.setLocation(new Vector3D(x * pp.getLength(), y * pp.getLength(), z * pp.getLength()));
                     if (pp.getLocationFilter() != null) {

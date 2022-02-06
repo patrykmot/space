@@ -13,9 +13,9 @@ public class ForceCalculatorLenardJonesTest {
         double rm = Math.pow(2, 1 / 6.0) * ro;
         ForceCalculatorLenardJones calc = new ForceCalculatorLenardJones(10, rm);
 
-        PhysicalBody ph1 = new PhysicalBody();
+        Particle ph1 = new Particle();
         ph1.setLocation(Vector3D.create(0, 0, 0));
-        PhysicalBody ph2 = new PhysicalBody();
+        Particle ph2 = new Particle();
         ph2.setLocation(Vector3D.create(rm, 0, 0));
 
         Vector3D force = calc.calculateForceWhichAGetsFromB(ph1, ph2);
@@ -30,9 +30,9 @@ public class ForceCalculatorLenardJonesTest {
         double rm = 5;
         ForceCalculatorLenardJones calc = new ForceCalculatorLenardJones(10, 5);
 
-        PhysicalBody ph1 = new PhysicalBody();
+        Particle ph1 = new Particle();
         ph1.setLocation(Vector3D.create(0, 0, 0));
-        PhysicalBody ph2 = new PhysicalBody();
+        Particle ph2 = new Particle();
         ph2.setLocation(Vector3D.create(rm - 0.5, 0, 0));
 
         Vector3D force = calc.calculateForceWhichAGetsFromB(ph1, ph2);
@@ -48,9 +48,9 @@ public class ForceCalculatorLenardJonesTest {
         ForceCalculatorLenardJones calc = new ForceCalculatorLenardJones(10, ro);
         double rm = calc.calculateZeroForceDistanceRm();
 
-        PhysicalBody ph1 = new PhysicalBody();
+        Particle ph1 = new Particle();
         ph1.setLocation(Vector3D.create(0, 0, 0));
-        PhysicalBody ph2 = new PhysicalBody();
+        Particle ph2 = new Particle();
         ph2.setLocation(Vector3D.create(rm + 0.5, 0, 0));
 
         Vector3D force = calc.calculateForceWhichAGetsFromB(ph1, ph2);

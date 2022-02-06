@@ -14,11 +14,11 @@ public class NewtonEquationNumericalSolutionVerlet implements NewtonEquationNume
         this.dt2 = dt * dt;
     }
 
-    public void calculateStep(List<PhysicalBody> bodies, Consumer<Boolean> forceCalculationHandler) {
+    public void calculateStep(List<Particle> bodies, Consumer<Boolean> forceCalculationHandler) {
         // Verlet algorithm https://www.compadre.org/PICUP/resources/Numerical-Integration/
         // Calculate new location
         List<Vector3D> prevForce = new ArrayList<>(bodies.size());
-        for (PhysicalBody pb : bodies) {
+        for (Particle pb : bodies) {
             pb.getLocation().add(
                     (pb.getVelocity().copy().mapMultiply(dt)).add(
                             pb.getForce().copy().mapMultiply((0.5 * dt2) / pb.getM())
@@ -32,7 +32,7 @@ public class NewtonEquationNumericalSolutionVerlet implements NewtonEquationNume
 
         // Calculate new velocity
         for (int i = 0; i < bodies.size(); ++i) {
-            PhysicalBody pb = bodies.get(i);
+            Particle pb = bodies.get(i);
             Vector3D force = prevForce.get(i);
             pb.getVelocity().add(pb.getForce().copy().add(force).mapMultiply((dt * 0.5) / pb.getM()));
         }
