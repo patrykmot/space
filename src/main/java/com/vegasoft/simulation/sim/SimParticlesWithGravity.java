@@ -19,18 +19,22 @@ public class SimParticlesWithGravity extends SimulationFactory {
 
     @Override
     public Simulation createSimulation() {
-        double rm = 2;
+        double rm = 1;
         ForceCalculator forceParticles = new ForceCalculatorLenardJones(0.1, rm);
-        ForceCalculator forceStationary = ForceCalculatorCollection.of(new ForceCalculatorLenardJones(0.01, rm), new ForceG(), new ForceAirDrag());
-        NewtonEquationNumericalSolution numericalSolution = new NewtonEquationNumericalSolutionVerlet(0.00025);
+        ForceCalculator forceStationary = ForceCalculatorCollection.of(
+                new ForceCalculatorLenardJones(1, rm),
+                new ForceG(),
+                new ForceAirDrag(0.6)
+        );
+        NewtonEquationNumericalSolution numericalSolution = new NewtonEquationNumericalSolutionVerlet(0.001);
 
-        RandomizeLocationFunction rf = new RandomizeLocationFunction(Vector3D.create(-3, 30, -20), 0.1);
-        PhysicalBodyFactoryParticles factoryParticles = new PhysicalBodyFactoryParticles(new ParticleParams(4, 10, 4, rm - 0.14, rf));
+        RandomizeLocationFunction rf = new RandomizeLocationFunction(Vector3D.create(-2, 30, -20), 0.1);
+        PhysicalBodyFactoryParticles factoryParticles = new PhysicalBodyFactoryParticles(new ParticleParams(3, 40, 3, rm - 0.14, rf));
         List<Particle> particleList = factoryParticles.createBodies();
 
         List<StationaryPhysicalBody> stationaryBodies = new ArrayList<>();
 
-        double size = 14;
+        double size = 4;
         // y
         stationaryBodies.add(new StationaryPhysicalBodyInfiniteFlatSurface(new Vector3D(0.0, 0.0, 0.0), new Vector3D(0.0, 1.0, 0.0)));
 

@@ -4,7 +4,7 @@ public class PhysicalBody {
     private Vector3D velocity = Vector3D.getZeroVec();
     private String name;
     private double m = 1.0;
-    private double airDragCoefficient = 0.05;
+    private double airDragCoefficient = 0.2;
     private Vector3D location = Vector3D.getZeroVec();
 
     public PhysicalBody() {
