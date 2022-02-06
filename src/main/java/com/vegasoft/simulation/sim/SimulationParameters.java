@@ -22,7 +22,7 @@ public class SimulationParameters {
         this.particles = particles;
     }
 
-    public SimulationParameters(NewtonEquationNumericalSolution numericalSolution, ForceCalculator particleForces, List<Particle> particles, ForceCalculator stationaryForces, List<StationaryPhysicalBody> stationaryBodies) {
+    public SimulationParameters(ForceCalculator particleForces, NewtonEquationNumericalSolution numericalSolution, List<Particle> particles, ForceCalculator stationaryForces, List<StationaryPhysicalBody> stationaryBodies) {
         this.numericalSolution = numericalSolution;
         this.particleForces = particleForces;
         this.particles = particles;

@@ -8,7 +8,7 @@ import com.vegasoft.simulation.calc.Particle;
 
 import java.util.List;
 
-public class SimParticles implements SimulationFactory {
+public class SimParticles extends SimulationFactory {
 
     @Override
     public Simulation createSimulation() {

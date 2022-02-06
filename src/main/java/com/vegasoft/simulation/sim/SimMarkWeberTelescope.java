@@ -8,7 +8,7 @@ import com.vegasoft.simulation.calc.Particle;
 
 import java.util.List;
 
-public class SimMarkWeberTelescope implements SimulationFactory {
+public class SimMarkWeberTelescope extends SimulationFactory {
     private PhysicalBodyFactoryForSpaceTelescopeWeber pbFactory;
 
     @Override
