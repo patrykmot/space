@@ -22,6 +22,23 @@ public class RandomizeLocationFunction implements Function<Vector3D, Vector3D> {
         return new Vector3D(vector3D.getX() + getNextRandom(), vector3D.getY() + getNextRandom(), vector3D.getZ() + getNextRandom());
     }
 
+    public Vector3D getStartLocation() {
+        return startLocation;
+    }
+
+    public void setStartLocation(Vector3D startLocation) {
+        this.startLocation = startLocation;
+        return;
+    }
+
+    public double getMaxRandomSize() {
+        return maxRandomSize;
+    }
+
+    public void setMaxRandomSize(double maxRandomSize) {
+        this.maxRandomSize = maxRandomSize;
+    }
+
     private double getNextRandom() {
         return r.nextDouble() * maxRandomSize * (r.nextBoolean() ? 1 : -1);
     }

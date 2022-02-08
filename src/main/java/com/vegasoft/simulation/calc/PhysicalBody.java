@@ -4,8 +4,9 @@ public class PhysicalBody {
     private Vector3D velocity = Vector3D.getZeroVec();
     private String name;
     private double m = 1.0;
-    private double airDragCoefficient = 0.2;
+    private double airDragCoefficient = 0.1;
     private Vector3D location = Vector3D.getZeroVec();
+    private BodyColor bodyColor = BodyColor.TURQUOISE;
 
     public PhysicalBody() {
     }
@@ -19,6 +20,7 @@ public class PhysicalBody {
         this.name = b.name;
         this.location = b.location.copy();
         this.velocity = b.velocity.copy();
+        this.bodyColor = b.bodyColor;
     }
 
     public Vector3D getLocation() {
@@ -68,6 +70,14 @@ public class PhysicalBody {
     public PhysicalBody setVelocity(Vector3D velocity) {
         this.velocity = velocity;
         return this;
+    }
+
+    public BodyColor getBodyColor() {
+        return bodyColor;
+    }
+
+    public void setBodyColor(BodyColor bodyColor) {
+        this.bodyColor = bodyColor;
     }
 
     @Override

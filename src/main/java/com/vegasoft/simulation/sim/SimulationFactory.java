@@ -12,6 +12,7 @@ public abstract class SimulationFactory {
         registerFactory(SimMarkWeberTelescope.class);
         registerFactory(SimParticles.class);
         registerFactory(SimParticlesWithGravity.class);
+        registerFactory(SimParticlesTwoGroups.class);
     }
 
     private static void registerFactory(Class<? extends SimulationFactory> factoryClass) {

@@ -6,6 +6,7 @@ import com.vegasoft.simulation.calc.Vector3D;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static org.lwjgl.opengl.GL11.glColor4f;
 import static org.lwjgl.opengl.GL11.glPopMatrix;
 import static org.lwjgl.opengl.GL11.glPushMatrix;
 import static org.lwjgl.opengl.GL11.glScaled;
@@ -30,6 +31,7 @@ public class PhysicalBodyGraphics implements Graphics {
             }
             glPushMatrix();
             glTranslated(location.getX(), location.getY(), location.getZ());
+            glColor4f(pb.getBodyColor().getR(), pb.getBodyColor().getG(), pb.getBodyColor().getB(), 0.7f);
 //            setScale(pb);
             graphicAssistance.drawCubePlease();
             glPopMatrix();

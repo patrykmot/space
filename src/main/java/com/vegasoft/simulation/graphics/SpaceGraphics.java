@@ -4,6 +4,7 @@ import org.joml.Matrix4f;
 import org.joml.Matrix4x3f;
 import org.joml.Vector3f;
 import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GLCapabilities;
 import org.lwjgl.system.MemoryStack;
 
@@ -46,12 +47,15 @@ import static org.lwjgl.opengl.ARBShaderObjects.glShaderSourceARB;
 import static org.lwjgl.opengl.ARBShaderObjects.glUniformMatrix4fvARB;
 import static org.lwjgl.opengl.ARBShaderObjects.glUseProgramObjectARB;
 import static org.lwjgl.opengl.ARBVertexShader.GL_VERTEX_SHADER_ARB;
+import static org.lwjgl.opengl.GL11.GL_AMBIENT;
 import static org.lwjgl.opengl.GL11.GL_BLEND;
 import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
 import static org.lwjgl.opengl.GL11.GL_COMPILE;
 import static org.lwjgl.opengl.GL11.GL_DEPTH_BUFFER_BIT;
 import static org.lwjgl.opengl.GL11.GL_DEPTH_TEST;
+import static org.lwjgl.opengl.GL11.GL_LIGHT0;
 import static org.lwjgl.opengl.GL11.GL_ONE_MINUS_SRC_ALPHA;
+import static org.lwjgl.opengl.GL11.GL_POSITION;
 import static org.lwjgl.opengl.GL11.GL_QUADS;
 import static org.lwjgl.opengl.GL11.GL_SRC_ALPHA;
 import static org.lwjgl.opengl.GL11.GL_TRIANGLES;
@@ -65,6 +69,7 @@ import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL11.glEnd;
 import static org.lwjgl.opengl.GL11.glEndList;
 import static org.lwjgl.opengl.GL11.glGenLists;
+import static org.lwjgl.opengl.GL11.glLightfv;
 import static org.lwjgl.opengl.GL11.glLoadMatrixf;
 import static org.lwjgl.opengl.GL11.glNewList;
 import static org.lwjgl.opengl.GL11.glVertex3f;
@@ -127,6 +132,26 @@ public class SpaceGraphics {
             throw new RuntimeException("Failed to create the GLFW window");
     }
 
+    float[] qaAmbientLight = {1.0f, 1.0f, 1.0f, 1.0f};// Whilte Ambient Light
+    float[] qaDiffuseLight = {1, 0.9f, 1, 1.0f}; // Whilte Diffuse Light
+    float[] qaSpecularLight = {1.0f, 1.0f, 1.0f, 1.0f}; // White Specular Light
+    float[] qaLightPosition = {3, 0, 0, 0};
+
+    void initLighting() {
+
+        // Enable lighting
+        glEnable(GL11.GL_LIGHTING);
+        glEnable(GL_LIGHT0);
+
+        // Set lighting intensity and color
+        glLightfv(GL_LIGHT0, GL_AMBIENT, qaAmbientLight);
+//        glLightfv(GL_LIGHT0, GL_DIFFUSE, qaDiffuseLight);
+//        glLightfv(GL_LIGHT0, GL_SPECULAR, qaSpecularLight);
+
+        // Set the light position
+        glLightfv(GL_LIGHT0, GL_POSITION, qaLightPosition);
+    }
+
     private void registerWindowEventHandler() {
         glfwSetKeyCallback(window, this::onKey);
         glfwSetFramebufferSizeCallback(window, this::onFramebufferSize);
@@ -148,6 +173,7 @@ public class SpaceGraphics {
         createGridProgram();
         createGrid();
         createCube();
+//        initLighting();
 
         glfwShowWindow(window);
 
@@ -176,8 +202,8 @@ public class SpaceGraphics {
     private void setGlobalGlState() {
         glClearColor(0.7f, 0.8f, 0.9f, 1);
         glEnable(GL_DEPTH_TEST);
-        glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glEnable(GL_BLEND);
     }
 
     private void createGridProgram() {
@@ -233,12 +259,12 @@ public class SpaceGraphics {
         sphere = glGenLists(1);
         glNewList(sphere, GL_COMPILE);
         glBegin(GL_QUADS);
-        glColor3f(0.0f, 0.0f, 0.2f);
+//        glColor3f(0.0f, 0.0f, 0.2f);
         glVertex3f(0.5f, -0.5f, -0.5f);
         glVertex3f(-0.5f, -0.5f, -0.5f);
         glVertex3f(-0.5f, 0.5f, -0.5f);
         glVertex3f(0.5f, 0.5f, -0.5f);
-        glColor3f(0.0f, 0.0f, 1.0f);
+//        glColor3f(0.0f, 0.0f, 1.0f);
         glVertex3f(0.5f, -0.5f, 0.5f);
         glVertex3f(0.5f, 0.5f, 0.5f);
         glVertex3f(-0.5f, 0.5f, 0.5f);
@@ -248,12 +274,12 @@ public class SpaceGraphics {
         glVertex3f(0.5f, 0.5f, -0.5f);
         glVertex3f(0.5f, 0.5f, 0.5f);
         glVertex3f(0.5f, -0.5f, 0.5f);
-        glColor3f(0.2f, 0.0f, 0.0f);
+//        glColor3f(0.2f, 0.0f, 0.0f);
         glVertex3f(-0.5f, -0.5f, 0.5f);
         glVertex3f(-0.5f, 0.5f, 0.5f);
         glVertex3f(-0.5f, 0.5f, -0.5f);
         glVertex3f(-0.5f, -0.5f, -0.5f);
-        glColor3f(0.0f, 1.0f, 0.0f);
+//        glColor3f(0.0f, 1.0f, 0.0f);
         glVertex3f(0.5f, 0.5f, 0.5f);
         glVertex3f(0.5f, 0.5f, -0.5f);
         glVertex3f(-0.5f, 0.5f, -0.5f);
@@ -271,32 +297,32 @@ public class SpaceGraphics {
         cube = glGenLists(1);
         glNewList(cube, GL_COMPILE);
         glBegin(GL_QUADS);
-        glColor3f(0.0f, 0.0f, 0.2f);
+//        glColor3f(0.0f, 0.0f, 0.2f);
         glVertex3f(0.5f, -0.5f, -0.5f);
         glVertex3f(-0.5f, -0.5f, -0.5f);
         glVertex3f(-0.5f, 0.5f, -0.5f);
         glVertex3f(0.5f, 0.5f, -0.5f);
-        glColor3f(0.0f, 0.0f, 1.0f);
+//        glColor3f(0.0f, 0.0f, 1.0f);
         glVertex3f(0.5f, -0.5f, 0.5f);
         glVertex3f(0.5f, 0.5f, 0.5f);
         glVertex3f(-0.5f, 0.5f, 0.5f);
         glVertex3f(-0.5f, -0.5f, 0.5f);
-        glColor3f(1.0f, 0.0f, 0.0f);
+//        glColor3f(1.0f, 0.0f, 0.0f);
         glVertex3f(0.5f, -0.5f, -0.5f);
         glVertex3f(0.5f, 0.5f, -0.5f);
         glVertex3f(0.5f, 0.5f, 0.5f);
         glVertex3f(0.5f, -0.5f, 0.5f);
-        glColor3f(0.2f, 0.0f, 0.0f);
+//        glColor3f(0.2f, 0.0f, 0.0f);
         glVertex3f(-0.5f, -0.5f, 0.5f);
         glVertex3f(-0.5f, 0.5f, 0.5f);
         glVertex3f(-0.5f, 0.5f, -0.5f);
         glVertex3f(-0.5f, -0.5f, -0.5f);
-        glColor3f(0.0f, 1.0f, 0.0f);
+//        glColor3f(0.0f, 1.0f, 0.0f);
         glVertex3f(0.5f, 0.5f, 0.5f);
         glVertex3f(0.5f, 0.5f, -0.5f);
         glVertex3f(-0.5f, 0.5f, -0.5f);
         glVertex3f(-0.5f, 0.5f, 0.5f);
-        glColor3f(0.0f, 0.2f, 0.0f);
+//        glColor3f(0.0f, 0.2f, 0.0f);
         glVertex3f(0.5f, -0.5f, -0.5f);
         glVertex3f(0.5f, -0.5f, 0.5f);
         glVertex3f(-0.5f, -0.5f, 0.5f);

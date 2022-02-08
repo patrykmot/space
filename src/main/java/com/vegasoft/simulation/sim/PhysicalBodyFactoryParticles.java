@@ -25,10 +25,9 @@ public class PhysicalBodyFactoryParticles implements PhysicalBodyFactory {
                 for (int z = 0; z < pp.getZCount(); ++z) {
                     Particle pb = new Particle();
                     pb.setName(createName());
+                    pp.getParticleBodyColor().ifPresent(c -> pb.setBodyColor(c));
                     pb.setLocation(new Vector3D(x * pp.getLength(), y * pp.getLength(), z * pp.getLength()));
-                    if (pp.getLocationFilter() != null) {
-                        pb.setLocation(pp.getLocationFilter().apply(pb.getLocation()));
-                    }
+                    pp.getLocationFilter().ifPresent(lf -> pb.setLocation(lf.apply(pb.getLocation())));
                     pbList.add(pb);
                 }
             }
